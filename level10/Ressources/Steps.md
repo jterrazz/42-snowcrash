@@ -30,4 +30,4 @@ Warning: Using access() to check if a user is authorized to, for example, open a
        using open(2) creates a security hole, because the user might exploit the short time interval between checking
        and  opening  the file to manipulate it.
 ```
-
+http://www.csl.sri.com/users/ddean/papers/usenix04.pdf
