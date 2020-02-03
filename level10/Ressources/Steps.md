@@ -31,3 +31,6 @@ Warning: Using access() to check if a user is authorized to, for example, open a
        and  opening  the file to manipulate it.
 ```
 http://www.csl.sri.com/users/ddean/papers/usenix04.pdf
+
+We find the flag
+woupa2yuojeeaaed06riuj63c
