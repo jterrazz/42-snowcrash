@@ -13,7 +13,6 @@ $xx =~ s/\s.*//;
 Therefore we cannot input the command directly through the string but we can inject the path to a script that will run getflag, as long as the path has no spaces or lowercase letters.
 
 ```bash
-touch /tmp/RUNME
 echo "getflag > /tmp/token" > /tmp/RUNME
 chmod +x /TMP/RUNME
 ```

