@@ -1,4 +1,4 @@
-# A serie of security challenges
+# 42-Snowcrash
 
 > This project is composed of 14 levels, each one has a security breach giving access to the next level.
 
