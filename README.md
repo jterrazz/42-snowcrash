@@ -1,6 +1,6 @@
 # A serie of security challenges
 
-This project is composed of 14 levels, each one has a security breach giving access to the next level.
+> This project is composed of 14 levels, each one has a security breach giving access to the next level.
 
 In this project I learned about:
 - Analysing binaries
