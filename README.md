@@ -1,6 +1,6 @@
 # 42-Snowcrash
 
-> This project is composed of 14 levels, each one has a security breach giving access to the next level.
+> This project is composed of 14 levels. Each level has a security breach that gives you access to the next one.
 
 In this project I learned about:
 - Analysing binaries
